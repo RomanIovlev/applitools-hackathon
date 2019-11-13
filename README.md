@@ -4,6 +4,7 @@
 * Functional testing can miss a lot of things without Visual testing
 * You can spend to much time for failing tests maintenance without screenshots of failed test cases
 
+## About test project
 Test project contains two types of tests:</br>
 * Traditional (TraditionalTests.java)</br>
 * Visual (VisualTests.java); You can setup eyes in VisualTestsInit.java. </br>
