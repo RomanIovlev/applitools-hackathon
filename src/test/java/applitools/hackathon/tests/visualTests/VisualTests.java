@@ -72,6 +72,5 @@ public class VisualTests extends VisualTestsInit {
         loginForm().loginAs(new User());
         eyes.setMatchLevel(MatchLevel.LAYOUT);
         eyes.checkWindow("Expense Chart 2017-2019");
-
     }
 }

@@ -21,13 +21,13 @@ Also in pom.xml property "testSuite" you can specify test suite you would like t
 And of course you can run tests using maven console using properties</br>
 </br>
 This order to run tests recommended to verify test project results:</br>
-**clean install -DtestSuite=traditional -Denvironment=V1** - First of the run traditional tests against environment V1</br>
+**clean install -DtestSuite=traditional -Denvironment=V1** - First time you should run traditional tests against environment V1</br>
 (optional) **clean install -DtestSuite=traditional -Denvironment=V1** - Second run against same environment to be sure that tests still passed and baselines passed</br>
-**clean install -DtestSuite=traditional -Denvironment=V2** - Third run tests against environment V2 and identify issues</br>
+**clean install -DtestSuite=traditional -Denvironment=V2** - Third time, tests against environment V2 and identify issues</br>
 You can observe test run results in console log or using allure report. In order to do it just place folder with "allure-results" in "target folder" and run Plugins>allure>allure:serve in maven panel or start local allure server using console</br>
 See visual images comparison based on Selenium TakesScreenshot for canvas tests in \src\test\.logs\screens folder</br>
 </br>
-**clean install -DtestSuite=visual -Denvironment=V1** - First run of the visual tests with applitools eyes against environment V1</br>
+**clean install -DtestSuite=visual -Denvironment=V1** - First time, run visual tests with Applitools eyes against environment V1</br>
 (optional) **clean install -DtestSuite=visual -Denvironment=V1** - Second run against same environment to be sure that tests still passed and baselines passed</br>
 **clean install -DtestSuite=visual -Denvironment=V2** - Third run tests against environment V2 and identify issues</br>
 Visual testing results you can also see in Allure report or in Applitools web application using your APPLITOOLS_API_KEY.</br>
