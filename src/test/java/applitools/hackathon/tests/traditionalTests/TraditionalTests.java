@@ -11,6 +11,7 @@ import applitools.hackathon.entities.User;
 import applitools.hackathon.test.data.TestDataProvider;
 import applitools.hackathon.utils.Utils;
 import com.epam.jdi.light.elements.common.UIElement;
+import com.epam.jdi.light.elements.complex.table.Line;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.tools.Timer;
 import org.openqa.selenium.Dimension;
@@ -54,16 +55,19 @@ public class TraditionalTests extends TestsInit {
     public void sortTableValidation() {
         loginForm().loginAs(new User());
         List<Transaction> unsortedTransactions = transactionsTable.allData();
+        List<Line> images = transactionsTable.rowsImages();
 
         transactionsTable.headerUI().select("AMOUNT");
         transactionsTable.assertThat()
             .rows(hasItems(toArray(unsortedTransactions)))
-            .sortedBy((prev,next) -> prev.amount.value() < next.amount.value());
+            .sortedBy((prev,next) -> prev.amount.value() < next.amount.value())
+            .rowsVisualValidation("AMOUNT", images);
 
         transactionsTable.headerUI().select("AMOUNT");
         transactionsTable.assertThat()
             .rows(hasItems(toArray(unsortedTransactions)))
-            .sortedBy((prev,next) -> prev.amount.value() > next.amount.value());
+            .sortedBy((prev,next) -> prev.amount.value() > next.amount.value())
+            .rowsVisualValidation("AMOUNT", images);
     }
 
     @Test(suiteName = "Canvas Chart Test")
