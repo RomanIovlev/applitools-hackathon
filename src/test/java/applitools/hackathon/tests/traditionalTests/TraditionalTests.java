@@ -61,13 +61,13 @@ public class TraditionalTests extends TestsInit {
         transactionsTable.assertThat()
             .rows(hasItems(toArray(unsortedTransactions)))
             .sortedBy((prev,next) -> prev.amount.value() < next.amount.value())
-            .rowsVisualValidation("AMOUNT", images);
+            .rowsVisualValidation("Description", images);
 
         transactionsTable.headerUI().select("AMOUNT");
         transactionsTable.assertThat()
             .rows(hasItems(toArray(unsortedTransactions)))
             .sortedBy((prev,next) -> prev.amount.value() > next.amount.value())
-            .rowsVisualValidation("AMOUNT", images);
+            .rowsVisualValidation("Description", images);
     }
 
     @Test(suiteName = "Canvas Chart Test")
