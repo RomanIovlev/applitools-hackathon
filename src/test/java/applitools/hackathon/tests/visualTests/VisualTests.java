@@ -9,16 +9,20 @@ import applitools.hackathon.VisualTestsInit;
 import applitools.hackathon.entities.User;
 import applitools.hackathon.test.data.TestDataProvider;
 import com.applitools.eyes.MatchLevel;
+import com.applitools.eyes.selenium.fluent.Target;
 import com.epam.jdi.light.elements.composite.WebPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static applitools.hackathon.pages.AppPage.compareExpenses;
-import static applitools.hackathon.pages.AppPage.transactionsTable;
+import static applitools.hackathon.pages.AppPage.*;
 import static applitools.hackathon.pages.ApplitoolsSite.appPage;
 import static applitools.hackathon.pages.ApplitoolsSite.loginForm;
+import static applitools.hackathon.pages.ChartPage.expensesChart;
 import static applitools.hackathon.pages.ChartPage.showNextYear;
+import static com.applitools.eyes.selenium.fluent.Target.*;
+import static com.epam.jdi.light.driver.WebDriverFactory.getDriver;
 
 public class VisualTests extends VisualTestsInit {
     @BeforeMethod
@@ -28,7 +32,7 @@ public class VisualTests extends VisualTestsInit {
 
     @Test(suiteName = "Login Page UI Elements Test")
     public void loginPageValidation() {
-        eyes.checkWindow("Login Page UI Elements Test");
+        eyes.checkWindow("Login Page view");
     }
 
     @Test(suiteName = "Data-Driven Test",
@@ -36,6 +40,7 @@ public class VisualTests extends VisualTestsInit {
     public void loginSuccessValidation(User user) {
         loginForm().loginAs(user);
         appPage.checkOpened();
+        eyes.checkWindow("App Page view");
     }
 
     @Test(suiteName = "Data-Driven Test",
@@ -48,7 +53,6 @@ public class VisualTests extends VisualTestsInit {
     @Test(suiteName = "Table Sort Test")
     public void sortTableValidation() {
         loginForm().loginAs(new User());
-
         transactionsTable.headerUI().select("AMOUNT");
         WebElement transactions = transactionsTable.core().getWebElement();
         eyes.checkElement(transactions, "Transactions Ascending");
@@ -61,9 +65,10 @@ public class VisualTests extends VisualTestsInit {
     public void canvasChartTest() {
         loginForm().loginAs(new User());
         compareExpenses.click();
-        eyes.checkWindow("Expense Chart 2017-2018");
+        WebElement chart = transactionsTable.core().getWebElement();
+        eyes.checkElement(chart, "Expenses Chart 2017-2018");
         showNextYear.click();
-        eyes.checkWindow("Expense Chart 2017-2019");
+        eyes.checkElement(chart, "Expenses Chart 2017-2019");
     }
 
     @Test(suiteName = "Dynamic Content Test")
@@ -71,6 +76,6 @@ public class VisualTests extends VisualTestsInit {
         WebPage.openUrl(startUrl+"?showAd=true");
         loginForm().loginAs(new User());
         eyes.setMatchLevel(MatchLevel.LAYOUT);
-        eyes.checkWindow("Expense Chart 2017-2019");
+        eyes.checkElement(advertisements.core().getWebElement(), "Dynamic Advertisement");
     }
 }
