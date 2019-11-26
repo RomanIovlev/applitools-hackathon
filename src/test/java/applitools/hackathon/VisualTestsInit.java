@@ -5,7 +5,6 @@ package applitools.hackathon;
  * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
  */
 
-import applitools.hackathon.pages.ApplitoolsSite;
 import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.selenium.Eyes;
 import com.epam.jdi.tools.Timer;
@@ -19,8 +18,6 @@ import java.lang.reflect.Method;
 import static com.applitools.eyes.selenium.StitchMode.SCROLL;
 import static com.epam.jdi.light.driver.WebDriverFactory.getDriver;
 import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
-import static com.epam.jdi.light.elements.init.PageFactory.initSite;
-import static com.epam.jdi.tools.PropertyReader.readProperties;
 import static java.lang.String.format;
 
 public class VisualTestsInit {
@@ -31,9 +28,7 @@ public class VisualTestsInit {
 
     @BeforeSuite(alwaysRun = true)
     public static void setUp() {
-        initSite(ApplitoolsSite.class);
-        if (readProperties().getProperty("environment").equals("V2"))
-            startUrl = "https://demo.applitools.com/hackathonV2.html";
+        TestsInit.setUp();
         setupEyes();
     }
 

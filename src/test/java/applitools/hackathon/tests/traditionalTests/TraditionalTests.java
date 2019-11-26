@@ -30,7 +30,7 @@ import static org.hamcrest.Matchers.hasItems;
 public class TraditionalTests extends TestsInit {
     @BeforeMethod
     public void before() {
-        WebPage.openUrl(startUrl);
+        loginPage.open();
     }
 
     @Test(suiteName = "Login Page UI Elements Test")
@@ -85,7 +85,7 @@ public class TraditionalTests extends TestsInit {
 
     @Test(suiteName = "Dynamic Content Test")
     public void dynamicAdTest() {
-        WebPage.openUrl(startUrl+"?showAd=true");
+        loginPage.open("showAd=true");
         loginForm().loginAs(new User());
         advertisement.has().size(3)
             .all().elements(Utils::advertismentPresent);

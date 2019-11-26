@@ -17,8 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static applitools.hackathon.pages.AppPage.*;
-import static applitools.hackathon.pages.ApplitoolsSite.appPage;
-import static applitools.hackathon.pages.ApplitoolsSite.loginForm;
+import static applitools.hackathon.pages.ApplitoolsSite.*;
 import static applitools.hackathon.pages.ChartPage.expensesChart;
 import static applitools.hackathon.pages.ChartPage.showNextYear;
 import static com.applitools.eyes.selenium.fluent.Target.*;
@@ -27,7 +26,7 @@ import static com.epam.jdi.light.driver.WebDriverFactory.getDriver;
 public class VisualTests extends VisualTestsInit {
     @BeforeMethod
     public void before() {
-        WebPage.openUrl(startUrl);
+        loginPage.open();
     }
 
     @Test(suiteName = "Login Page UI Elements Test")
@@ -47,7 +46,8 @@ public class VisualTests extends VisualTestsInit {
             dataProvider = "emptyUsers", dataProviderClass = TestDataProvider.class)
     public void loginFailedValidation(User user, String message) {
         loginForm().loginAs(user);
-        eyes.checkWindow("Failed login: " + message);
+        eyes.check("Alert: " + message, Target.region(By.cssSelector(".alert-warning")));
+        //eyes.checkWindow("Failed login: " + message);
     }
 
     @Test(suiteName = "Table Sort Test")
@@ -65,7 +65,7 @@ public class VisualTests extends VisualTestsInit {
     public void canvasChartTest() {
         loginForm().loginAs(new User());
         compareExpenses.click();
-        WebElement chart = transactionsTable.core().getWebElement();
+        WebElement chart = expensesChart.core().getWebElement();
         eyes.checkElement(chart, "Expenses Chart 2017-2018");
         showNextYear.click();
         eyes.checkElement(chart, "Expenses Chart 2017-2019");
@@ -73,7 +73,7 @@ public class VisualTests extends VisualTestsInit {
 
     @Test(suiteName = "Dynamic Content Test")
     public void dynamicAdTest() {
-        WebPage.openUrl(startUrl+"?showAd=true");
+        loginPage.open("showAd=true");
         loginForm().loginAs(new User());
         eyes.setMatchLevel(MatchLevel.LAYOUT);
         eyes.checkElement(advertisements.core().getWebElement(), "Dynamic Advertisement");
