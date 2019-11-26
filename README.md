@@ -3,7 +3,7 @@
 ## Major conclusions:
 * Functional testing can miss a lot of things without Visual testing
 * You can spend to much time for failing tests maintenance without screenshots of failed test cases
-* But just visual testing is not enough to validate functional requirements like correct workflow, sort order, business values.
+* But just visual testing is not enough to validate functional requirements like correct workflow, sort order, business values
 * Visual testing greatly increase test run execution time
 </br>
 **Main Conclusion: in order to get best results it is necessary combine both approaches that allows you to test application from functional and visual sides**</br>
@@ -11,7 +11,7 @@
 ## About test project
 Test project contains two types of tests:</br>
 * Traditional (TraditionalTests.java)
-* Visual (VisualTests.java); You can setup eyes in VisualTestsInit.java. 
+* Visual (VisualTests.java); You can setup eyes in VisualTestsInit.java 
 Note: **Don't forget to setup your APPLITOOLS_API_KEY in environment variables**</br>
 </br>
 Using IntelliJIdea: you can run tests </br>
@@ -19,10 +19,11 @@ Using IntelliJIdea: you can run tests </br>
 2. With right click and "Run" on testng xml (see details below)</br>
 3. Using maven "clean install" (or with additional parameteres, see details below)</br>
 Note: **You can run Allure report to see the results of test execution for both types of tests**</br>
-**To see Allure Report: Run mvn allure-serve <folder>, or put allure-resuts folder in target folder and run Plugins > allure > allure-serve in Maven panel**
-Note: **The results of Visual tests you can find in Applitools hackathon account**
-***For correct work of visual tests be sure that zoom level on Windwos is 100% (sometimes by default it is 150%)**
-Note: **This tests correct work verified on Windows 10. Resolution 1920x1080**
+**To see Allure Report: Run mvn allure-serve <folder>, or put allure-resuts folder in target folder and run Plugins > allure > allure-serve in Maven panel**</br>
+Note: **Images for visual validation for Traditional tests using images comparison based on Selenium TakesScreenshot, you can find at \src\test\.logs\screens folder**</br>
+Note: **The results of Visual tests you can find in Applitools hackathon account**</br>
+***For correct work of visual tests be sure that zoom level on Windwos is 100% (sometimes by default it is 150%)**</br>
+Note: **This tests correct work verified on Windows 10. Resolution 1920x1080**</br>
 
 ## Run with testng xml
 Project contains 3 testng xml files: **traditional.xml, visual.xml, all.xml**, that allows you to run specific tests or all tests in project</br>
@@ -50,9 +51,9 @@ Visual testing results you can also see in Allure report or in Applitools web ap
 
 ## Login Page UI Elements Test
 For this test is good to have visual validation because the requirement is "everything **looks** OK". With Standard approach you can check that all elements are on the page and has correct values, but:
-1. This is only one string of visual test and dozens for Traditional
-2. In case of multiple errors it is hard to get all errors on page, especially if some elements missed.
-3. You can't verify elements positions (will not fail in case of some misplacements)
+1. This is only one string of visual test and dozens for Traditional</br>
+2. In case of multiple errors it is hard to get all errors on page, especially if some elements missed</br>
+3. You can't verify elements positions (will not fail in case of some misplacements)</br>
 
 ## Data-Driven Test
 If requirement just check login functionality this can be done with functional tests only, especially for failed login messagges validation, but if you would like also to verify that no visual errors appear after your actions (like wrong message background or font color or broken layout) you can't avoid adding visual vhecks.

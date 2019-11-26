@@ -1,1 +1,0 @@
-{"uuid":"ee810023-912f-4043-8015-d453eaa9d73c","name":"applitools.hackathon.VisualTestsInit.afterEyes","description":"","start":1574763918382,"stop":1574763918752,"children":["d957eb57-711c-40d6-913d-8ae2a7f408da"],"afters":[{"name":"afterEyes","status":"passed","stage":"finished","description":"","start":1574763918382,"stop":1574763918752}]}

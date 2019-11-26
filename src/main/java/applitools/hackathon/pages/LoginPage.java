@@ -1,4 +1,4 @@
-package applitools.hackathon.sections;
+package applitools.hackathon.pages;
 
 /**
  * Created by Roman Iovlev on 10.11.2018

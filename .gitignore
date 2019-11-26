@@ -3,7 +3,9 @@
 target/
 *.zip
 *.exe
+.logs/
 *.xlsx
 .DS_Store/
 downloads/
 *.log
+.allure/
