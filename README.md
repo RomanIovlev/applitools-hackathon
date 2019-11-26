@@ -18,6 +18,7 @@ Using IntelliJIdea: you can run tests </br>
 1. With right click on it and select "Run" </br>
 2. With right click and "Run" on testng xml (see details below)</br>
 3. Using maven "clean install" (or with additional parameteres, see details below)</br>
+Note: **I leave .logs and allure-results folders in Github just to show you test resutls. Typically thi folderes should be ignored in .gitignore like this done in jdi-light-applitools branch**</br>
 Note: **You can run Allure report to see the results of test execution for both types of tests**</br>
 **To see Allure Report: Run mvn allure-serve <folder>, or put allure-resuts folder in target folder and run Plugins > allure > allure-serve in Maven panel**</br>
 Note: **Images for visual validation for Traditional tests using images comparison based on Selenium TakesScreenshot, you can find at \src\test\.logs\screens folder**</br>

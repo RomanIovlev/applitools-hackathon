@@ -9,3 +9,4 @@ target/
 downloads/
 *.log
 .allure/
+allure-results/
