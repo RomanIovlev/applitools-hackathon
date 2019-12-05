@@ -5,25 +5,27 @@
 * You can spend to much time for failing tests maintenance without screenshots of failed test cases
 * But just visual testing is not enough to validate functional requirements like correct workflow, sort order, business values
 * Visual testing greatly increase test run execution time
-</br>
+
 **Main Conclusion: in order to get best results it is necessary combine both approaches that allows you to test application from functional and visual sides**</br>
 
 ## About test project
 Test project contains two types of tests:</br>
 * Traditional (TraditionalTests.java)
 * Visual (VisualTests.java); You can setup eyes in VisualTestsInit.java 
+
 Note: **Don't forget to setup your APPLITOOLS_API_KEY in environment variables**</br>
 </br>
 Using IntelliJIdea: you can run tests </br>
 1. With right click on it and select "Run" </br>
 2. With right click and "Run" on testng xml (see details below)</br>
 3. Using maven "clean install" (or with additional parameteres, see details below)</br>
+
 Note: **I leave .logs and allure-results folders in Github just to show you test resutls. Typically thi folderes should be ignored in .gitignore like this done in jdi-light-applitools branch**</br>
 Note: **You can run Allure report to see the results of test execution for both types of tests**</br>
 **To see Allure Report: Run mvn allure-serve <folder>, or put allure-resuts folder in target folder and run Plugins > allure > allure-serve in Maven panel**</br>
 Note: **Images for visual validation for Traditional tests using images comparison based on Selenium TakesScreenshot, you can find at \src\test\.logs\screens folder**</br>
 Note: **The results of Visual tests you can find in Applitools hackathon account**</br>
-***For correct work of visual tests be sure that zoom level on Windwos is 100% (sometimes by default it is 150%)**</br>
+**For correct work of visual tests be sure that zoom level on Windwos is 100% (sometimes by default it is 150%)**</br>
 Note: **This tests correct work verified on Windows 10. Resolution 1920x1080**</br>
 
 ## Run with testng xml
@@ -75,7 +77,7 @@ In addition this can be validated with http request to service and validation th
 # JDI Light framework
 JDI Light framework used for this Exercise is Selenium based framework that operates with UI elements and helps to resuce amount of code for tests in 2-3 times compare to traditional approaches with tag-like elements and provide additional stability for you tests</br>
 
-#Best solution
+# Best solution
 You can find best solution for this task in branch jdi-light-applitools. </br>
 In this solution used package jdi-light-eyes that allows to add applitools visual validations without writing code (like eyes.check...). Framework will automatically do page validations for each new opened page and for each jdi assert on elements. This allow you to write functional tests and get visual validations without additional effort.
 
