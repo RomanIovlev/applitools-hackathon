@@ -2,11 +2,10 @@
 
 ## Major conclusions:
 * Functional testing can miss a lot of things without Visual testing
-* You can spend to much time for failing tests maintenance without screenshots of failed test cases
+* You can spend too much time for failing tests maintenance without screenshots of failed test cases
 * But just visual testing is not enough to validate functional requirements like correct workflow, sort order, business values
-* Visual testing greatly increase test run execution time
 
-**Main Conclusion: in order to get best results it is necessary combine both approaches that allows you to test application from functional and visual sides**</br>
+**Main Conclusion: in order to get achieve best quality for you project you should combine both approaches. This allows you to test application from functional and visual sides**</br>
 
 ## About test project
 Test project contains two types of tests:</br>
@@ -54,25 +53,32 @@ Visual testing results you can also see in Allure report or in Applitools web ap
 
 ## Login Page UI Elements Test
 For this test is good to have visual validation because the requirement is "everything **looks** OK". With Standard approach you can check that all elements are on the page and has correct values, but:
-1. This is only one string of visual test and dozens for Traditional</br>
+1. This is only the one string for visual test and dozens lines of code for Traditional approach</br>
 2. In case of multiple errors it is hard to get all errors on page, especially if some elements missed</br>
-3. You can't verify elements positions (will not fail in case of some misplacements)</br>
+3. You can't verify elements positions (will not fail in case of some misplacements), colors changes and other visual effects</br>
+>> Great example where you can't avoid visual testing
 
 ## Data-Driven Test
-If requirement just check login functionality this can be done with functional tests only, especially for failed login messagges validation, but if you would like also to verify that no visual errors appear after your actions (like wrong message background or font color or broken layout) you can't avoid adding visual vhecks.
+If requirement just to check login functionality this can be using only traditional functional tests, but if something happened beside error messages text validation (for example color, background position etc. or that other elements still on the same positions) you definitely need to add visual validations</br>
+>> Mostly for Functional testing, but require some visual validations
 
 ## Table Sort Test
-The functional requirement for this case better to check with Traditional approach. Because just visual validation without strings content analyzes will fail with any data changes in table.</br>
-From other hand because table has a lot of visual components like icons, badges and colors you can't avoid visual testing as well.</br>
-The solution is to combine both approaches. Validate data in table with traditional approach and each row with visual validation.</br>
-The complex thing here that you need to validate rows image not comparing to baseline but with its view before sorting. </br>
+The functional requirement for this case better to check with Traditional(Functional) approach. Because just visual validation without strings content analyzes will fail with any data changes in table</br>
+From other hand because table has a lot of visual components like icons, badges and colors you can't avoid visual testing as well</br>
+The solution is to combine both approaches. Validate data in table with traditional approach and each row with visual validation</br>
+The complex thing here that you need to validate rows image not comparing to baseline but with its view before sorting</br>
+>> It is important to use power of both approaches in this case
 
 ## Canvas Chart Test
-Of cource this case is only for Visual testing while you have no access to canvas data. This is the same if you would like to validate some icon or image (for example photo) on the page.
+Of course this case is only for Visual testing while you have no access to canvas data. This is the same if you would like to validate some icon or image (for example photo) on the page.
+But if you have access to chart data like in this case so this can be also checked with Functional approach, but...</br>
+In any case chart is like and image and without visual validation you can't avoid all possible issues
+>> Great example where you can't avoid visual testing
 
 ## Dynamic Content Test
-I think this test is mostly for Traditional testing because advertisement content can be anything and you can just validate that you have place for it. Even no image can be a correct behaviour because advertisement service sends nothing. </br>
+I think this test is mostly for Functional testing because advertisement content can be anything and you can't validate them as image. Even no image can be a correct behaviour because advertisement service sends nothing</br>
 In addition this can be validated with http request to service and validation that response has expected amount of advertisements.
+>> Good example where Functional testing more relevant (but visual testing also can help)
 
 # JDI Light framework
 JDI Light framework used for this Exercise is Selenium based framework that operates with UI elements and helps to resuce amount of code for tests in 2-3 times compare to traditional approaches with tag-like elements and provide additional stability for you tests</br>
