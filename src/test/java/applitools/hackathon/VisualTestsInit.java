@@ -1,20 +1,10 @@
 package applitools.hackathon;
 
-/**
- * Created by Roman Iovlev on 10.11.2018
- * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
- */
-
 import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.selenium.Eyes;
 import com.epam.jdi.tools.Timer;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-
+import org.testng.annotations.*;
 import java.lang.reflect.Method;
-
 import static com.applitools.eyes.selenium.StitchMode.SCROLL;
 import static com.epam.jdi.light.driver.WebDriverFactory.getDriver;
 import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;

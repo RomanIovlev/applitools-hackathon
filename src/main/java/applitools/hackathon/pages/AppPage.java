@@ -1,10 +1,5 @@
 package applitools.hackathon.pages;
 
-/**
- * Created by Roman Iovlev on 10.11.2018
- * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
- */
-
 import applitools.hackathon.custom.TransactionRow;
 import applitools.hackathon.entities.Transaction;
 import com.epam.jdi.light.elements.common.UIElement;
@@ -15,7 +10,6 @@ import com.epam.jdi.light.elements.pageobjects.annotations.GetVisible;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Link;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
 
 public class AppPage extends WebPage {
     @UI("#transactionsTable")

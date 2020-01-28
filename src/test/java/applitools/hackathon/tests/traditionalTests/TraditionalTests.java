@@ -1,31 +1,22 @@
 package applitools.hackathon.tests.traditionalTests;
 
-/**
- * Created by Roman Iovlev on 10.11.2018
- * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
- */
-
 import applitools.hackathon.TestsInit;
-import applitools.hackathon.entities.Transaction;
-import applitools.hackathon.entities.User;
+import applitools.hackathon.custom.ChartData;
+import applitools.hackathon.entities.*;
 import applitools.hackathon.test.data.TestDataProvider;
 import applitools.hackathon.utils.Utils;
-import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.table.Line;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.tools.Timer;
-import org.openqa.selenium.Dimension;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
+import org.testng.annotations.*;
 import java.util.List;
-
 import static applitools.hackathon.pages.AppPage.*;
 import static applitools.hackathon.pages.ApplitoolsSite.*;
-import static applitools.hackathon.pages.ChartPage.expensesChart;
-import static applitools.hackathon.pages.ChartPage.showNextYear;
+import static applitools.hackathon.pages.ChartPage.*;
 import static applitools.hackathon.utils.Utils.toArray;
-import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.testng.Assert.assertEquals;
 
 public class TraditionalTests extends TestsInit {
     @BeforeMethod
@@ -74,11 +65,18 @@ public class TraditionalTests extends TestsInit {
     public void canvasChartTest() {
         loginForm().loginAs(new User());
         compareExpenses.click();
+        ChartData chartBefore = chartData.get();
         WebPage.zoom(0.8);
         Timer.sleep(1000);
         expensesChart.visualValidation("Expense Chart 2017-2018");
         showNextYear.click();
         Timer.sleep(1000);
+        ChartData chartAfter = chartData.get();
+        assertThat(chartBefore.labels, equalTo(chartAfter.labels));
+        assertEquals(chartBefore.getByLabel("2017"),
+                      chartAfter.getByLabel("2017"));
+        assertEquals(chartBefore.getByLabel("2018"),
+                      chartAfter.getByLabel("2018"));
         expensesChart.visualValidation("Expense Chart 2017-2019");
         WebPage.zoom(1);
     }

@@ -1,27 +1,17 @@
 package applitools.hackathon.tests.visualTests;
 
-/**
- * Created by Roman Iovlev on 10.11.2018
- * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
- */
-
 import applitools.hackathon.VisualTestsInit;
 import applitools.hackathon.entities.User;
 import applitools.hackathon.test.data.TestDataProvider;
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.selenium.fluent.Target;
-import com.epam.jdi.light.elements.composite.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static applitools.hackathon.pages.AppPage.*;
 import static applitools.hackathon.pages.ApplitoolsSite.*;
-import static applitools.hackathon.pages.ChartPage.expensesChart;
-import static applitools.hackathon.pages.ChartPage.showNextYear;
-import static com.applitools.eyes.selenium.fluent.Target.*;
-import static com.epam.jdi.light.driver.WebDriverFactory.getDriver;
+import static applitools.hackathon.pages.ChartPage.*;
 
 public class VisualTests extends VisualTestsInit {
     @BeforeMethod

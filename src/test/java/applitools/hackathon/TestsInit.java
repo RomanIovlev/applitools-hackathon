@@ -1,13 +1,7 @@
 package applitools.hackathon;
 
-/**
- * Created by Roman Iovlev on 10.11.2018
- * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
- */
-
 import applitools.hackathon.pages.ApplitoolsSite;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import static applitools.hackathon.pages.ApplitoolsSite.loginPage;
 import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
