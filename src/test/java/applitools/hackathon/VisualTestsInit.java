@@ -25,8 +25,7 @@ public class VisualTestsInit {
     private static void setupEyes() {
         eyes = new Eyes();
         try {
-            //eyes.setApiKey(System.getenv("APPLITOOLS_API_KEY"));
-            eyes.setApiKey("t4exUX9Z6k7fhkE0N92DM2iqwpWQQ4qluvlHMj0j180110");
+            eyes.setApiKey(System.getenv("APPLITOOLS_API_KEY"));
         } catch (Exception ignore) {
             throw new RuntimeException("No API Key found; Please set environment variable 'APPLITOOLS_API_KEY'.");
         }
